@@ -17,82 +17,60 @@ class Heap(object):
         Ajoute une valeur dans l'arbre
         """
         def insert(self, value):
-        nouvel_arbre = ArbreFibo(value)
-        self.arbres.append(nouvel_arbre)
-        if (self.least is None or value < self.least.value):
-            self.least = nouvel_arbre
-        self.count = self.count + 1
+        i = 0
+        while i <= len(self.trees):
+            self.trees.append([value])
+            break
+        print("insert success")
+        return self.trees
 
-    def find_min(self) -> int:
-        """
-        Retourne la valeur minimum dans l'arbre
-        """
-        def find_min(self):
-        if self.least is None:
-            return None
-        return self.least.value
+    def find_min(self):
+        array_min = []
+        for val in self.trees:
+            array_min.append(val)
+        a = sorted(array_min)
+        print("le minimum est trouver")
+        return a[0]
 
     def delete_min(self) -> int:
         """
         Supprime et retourne la valeur minimum dans l'arbre
         """
         def delete_min(self):
-        plus_petit = self.least
-        if plus_petit is not None:
-            for nouveau in plus_petit.nouveau:
-                self.arbres.append(nouveau)
-            self.arbres.remove(plus_petit)
-            if self.arbres == []:
-                self.least = None
-            else:
-                self.least = self.arbres[0]
-                self.consolidate()
-            self.count = self.count - 1
-            return plus_petit.value
+        x = self.find_min()
+        for v in self.trees:
+            if x == v:
+                min = v
+                self.trees.remove(v)
+                print("le minimum est suprimer")
+                # print(min[0])
+                return min[0]
         
-        def consolidate(self):
-        aux = (floor_log(self.count) + 1) * [None]
-        while self.arbres != []:
-            x = self.arbres[0]
-            ancien = x.ancien
-            self.arbres.remove(x)
-            while aux[ancien] is not None:
-                y = aux[ancien]
-                if x.value > y.value:
-                    x, y = y, x
-                x.add_at_end(y)
-                aux[ancien] = None
-                ancien = ancien + 1
-            aux[ancien] = x
-        self.least = None
-        for k in aux:
-            if k is not None:
-                self.arbres.append(k)
-                if (self.least is None
-                        or k.value < self.least.value):
-                    self.least = k
+       
 
 
     def decrease_key(self, current_value: int, new_value :int) -> None:
         """
         Modify une valeur dans l'arbre
         """
-        def decrease_key(self, x, k):
-        if k > x.value:
-            return None
-        x.value = k
-        y = x.ancien
-        if y is not None and x.value < y.value:
-            self.cut(x, y)
-            self.cascading_cut(y)
-        if x.value < self.least.value:
-            self.least = x
+        
 
     def merge(self, fibonnaci_heap: object) -> None:
         """
         Fusionne deux arbres
         """
-        pass
+        def merge(self):
+        delete = self.delete_min()
+        # print(delete)
+        # print(self.trees)
+        for o in self.trees:
+            x = len(o)
+            for v in self.trees:
+                y = len(v)
+                if x == y:
+                    self.trees[0].append(delete)
+            print("merge success")
+            return None
 
 
 class FibonacciHeap(Heap):
@@ -109,64 +87,53 @@ class FibonacciHeap(Heap):
         """
         Ajoute une valeur dans l'arbre
         """
-        def insert_node(self, value):
-        nouvel_arbre = ArbreFibo(value)
-        self.arbres.append(nouvel_arbre)
-        if (self.least is None or value < self.least.value):
-            self.least = nouvel_arbre
-        self.count = self.count + 1
+    def insert(self, value):
+        i = 0
+        while i <= len(self.trees):
+            self.trees.append([value])
+            break
+        print("insert success")
+        return self.trees
 
     def find_min(self) -> int:
         """
         Retourne la valeur minimum dans l'arbre
         """
-        def find_min(self):
-        if self.least is None:
-            return None
-        return self.least.value
+       def find_min(self):
+        array_min = []
+        for val in self.trees:
+            array_min.append(val)
+        a = sorted(array_min)
+        print("le minimum est trouver")
+        return a[0]
 
     def delete_min(self) -> int:
         """
         Supprime et retourne la valeur minimum dans l'arbre
         """
         def delete_min(self):
-        plus_petit = self.least
-        if plus_petit is not None:
-            for nouveau in plus_petit.nouveau:
-                self.arbres.append(nouveau)
-            self.arbres.remove(plus_petit)
-            if self.arbres == []:
-                self.least = None
-            else:
-                self.least = self.arbres[0]
-                self.consolidate()
-            self.count = self.count - 1
-            return plus_petit.value
-        
-        def consolidate(self):
-        aux = (floor_log(self.count) + 1) * [None]
-        while self.arbres != []:
-            x = self.arbres[0]
-            ancien = x.ancien
-            self.arbres.remove(x)
-            while aux[ancien] is not None:
-                y = aux[ancien]
-                if x.value > y.value:
-                    x, y = y, x
-                x.add_at_end(y)
-                aux[ancien] = None
-                ancien = ancien + 1
-            aux[ancien] = x
-        self.least = None
-        for k in aux:
-            if k is not None:
-                self.arbres.append(k)
-                if (self.least is None
-                        or k.value < self.least.value):
-                    self.least = k
+        x = self.find_min()
+        for v in self.trees:
+            if x == v:
+                min = v
+                self.trees.remove(v)
+                print("le minimum est suprimer")
+                # print(min[0])
+                return min[0]
 
     def merge(self, fibonnaci_heap: Heap) -> None:
         """
         Fusionne deux arbres
         """
-        pass
+        def merge(self):
+        delete = self.delete_min()
+        # print(delete)
+        # print(self.trees)
+        for o in self.trees:
+            x = len(o)
+            for v in self.trees:
+                y = len(v)
+                if x == y:
+                    self.trees[0].append(delete)
+            print("merge success")
+            return None
