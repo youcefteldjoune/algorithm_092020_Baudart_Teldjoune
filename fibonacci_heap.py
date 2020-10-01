@@ -54,10 +54,10 @@ class FibonacciHeap(Heap):
         Ajoute une valeur dans l'arbre
         """
         def insert_node(self, value):
-        nouveau_arbre = ArbreFibo(value)
-        self.arbres.append(nouveau_arbre)
+        nouvel_arbre = ArbreFibo(value)
+        self.arbres.append(nouvel_arbre)
         if (self.least is None or value < self.least.value):
-            self.least = nouveau_arbre
+            self.least = nouvel_arbre
         self.count = self.count + 1
 
     def find_min(self) -> int:
