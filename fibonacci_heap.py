@@ -16,7 +16,7 @@ class Heap(object):
         """
         Ajoute une valeur dans l'arbre
         """
-        def insert_node(self, value):
+        def insert(self, value):
         nouvel_arbre = ArbreFibo(value)
         self.arbres.append(nouvel_arbre)
         if (self.least is None or value < self.least.value):
