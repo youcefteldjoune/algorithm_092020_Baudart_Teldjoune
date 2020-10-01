@@ -86,6 +86,27 @@ class FibonacciHeap(Heap):
                 self.consolidate()
             self.count = self.count - 1
             return plus_petit.value
+        def consolidate(self):
+        aux = (floor_log(self.count) + 1) * [None]
+        while self.arbres != []:
+            x = self.arbres[0]
+            ancien = x.ancien
+            self.arbres.remove(x)
+            while aux[ancien] is not None:
+                y = aux[ancien]
+                if x.value > y.value:
+                    x, y = y, x
+                x.add_at_end(y)
+                aux[ancien] = None
+                ancien = ancien + 1
+            aux[ancien] = x
+        self.least = None
+        for k in aux:
+            if k is not None:
+                self.arbres.append(k)
+                if (self.least is None
+                        or k.value < self.least.value):
+                    self.least = k
 
     def merge(self, fibonnaci_heap: Heap) -> None:
         """
