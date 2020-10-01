@@ -53,19 +53,39 @@ class FibonacciHeap(Heap):
         """
         Ajoute une valeur dans l'arbre
         """
-        pass
+        def insert_node(self, value):
+        nouveau_arbre = ArbreFibo(value)
+        self.arbres.append(nouveau_arbre)
+        if (self.least is None or value < self.least.value):
+            self.least = nouveau_arbre
+        self.count = self.count + 1
 
     def find_min(self) -> int:
         """
         Retourne la valeur minimum dans l'arbre
         """
-        pass
+        def get_min(self):
+        if self.least is None:
+            return None
+        return self.least.value
 
     def delete_min(self) -> int:
         """
         Supprime et retourne la valeur minimum dans l'arbre
         """
-        pass
+        def extract_min(self):
+        plus_petit = self.least
+        if plus_petit is not None:
+            for nouveau in plus_petit.nouveau:
+                self.arbres.append(nouveau)
+            self.arbres.remove(plus_petit)
+            if self.arbres == []:
+                self.least = None
+            else:
+                self.least = self.arbres[0]
+                self.consolidate()
+            self.count = self.count - 1
+            return plus_petit.value
 
     def merge(self, fibonnaci_heap: Heap) -> None:
         """
